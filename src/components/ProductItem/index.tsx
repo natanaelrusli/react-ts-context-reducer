@@ -2,11 +2,11 @@ import { ProductItf } from "../../types";
 
 import classes from "./ProductItem.module.css";
 
-interface CartItemProps {
+interface ProductItemProps {
   product: ProductItf;
 }
 
-const CartItem = ({ product }: CartItemProps) => {
+const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <div key={product.id} className={classes.productItem}>
       <img src={product.images[0]} alt='' />
@@ -18,4 +18,4 @@ const CartItem = ({ product }: CartItemProps) => {
   );
 };
 
-export default CartItem;
+export default ProductItem;
