@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { ProductItem } from "./components";
+import { ProductGrid } from "./components";
 import { ProductItf } from "./types";
 
 import "./App.css";
@@ -20,9 +20,7 @@ function App() {
 
   return (
     <div className='comp'>
-      {products.map((product) => (
-        <ProductItem key={product.id} product={product} />
-      ))}
+      <ProductGrid products={products} />
     </div>
   );
 }

@@ -9,8 +9,12 @@ interface ProductItemProps {
 const ProductItem = ({ product }: ProductItemProps) => {
   return (
     <div key={product.id} className={classes.productItem}>
-      <img src={product.images[0]} alt='' />
+      <div className={classes.productItem__imageWrapper}>
+        <img src={product.images[0]} alt={product.title} />
+      </div>
+
       <div className={classes.productTitle}>{product.title}</div>
+
       <button className={classes.addProductButton} onClick={() => {}}>
         Add to Cart
       </button>
