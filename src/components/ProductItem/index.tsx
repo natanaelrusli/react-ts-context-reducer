@@ -1,47 +1,26 @@
-import { useReducer } from "react";
-import { CartState, cartReducer } from "../../reducers/cartReducer";
+import { useContext } from "react";
 import { ProductItf } from "../../types";
 
 import classes from "./ProductItem.module.css";
+import { UserContext } from "../../context/UserContext";
 
 interface ProductItemProps {
   product: ProductItf;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
-  const initialCart: CartState = {
-    products: [],
-    totalPrice: 0,
-  };
-
-  const [, dispatchCart] = useReducer(cartReducer, initialCart);
-
-  const handleAddToCart = (product: ProductItf) => {
-    dispatchCart({
-      type: "addToCart",
-      payload: {
-        id: product.id,
-        title: product.title,
-        images: product.images,
-        price: product.price,
-        description: product.description,
-        quantity: 1,
-      },
-    });
-  };
+  const { user } = useContext(UserContext);
 
   return (
     <div key={product.id} className={classes.productItem}>
+      <p>{user.username}</p>
       <div className={classes.productItem__imageWrapper}>
         <img src={product.images[0]} alt={product.title} />
       </div>
 
       <div className={classes.productTitle}>{product.title}</div>
 
-      <button
-        className={classes.addProductButton}
-        onClick={() => handleAddToCart(product)}
-      >
+      <button className={classes.addProductButton} onClick={() => {}}>
         Add to Cart
       </button>
     </div>

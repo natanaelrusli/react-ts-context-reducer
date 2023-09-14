@@ -9,3 +9,8 @@ export interface ProductItf {
 export interface CartItemItf extends ProductItf {
   quantity: number;
 }
+
+export interface UserDataItf {
+  username: string;
+  email: string;
+}
