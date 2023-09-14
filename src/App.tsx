@@ -21,7 +21,7 @@ function App() {
   return (
     <div className='comp'>
       {products.map((product) => (
-        <ProductItem product={product} />
+        <ProductItem key={product.id} product={product} />
       ))}
     </div>
   );
