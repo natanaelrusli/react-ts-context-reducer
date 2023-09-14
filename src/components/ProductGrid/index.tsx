@@ -10,7 +10,7 @@ const ProductGrid = ({ products }: ProductGridProps) => {
   return (
     <div className={classes.productGrid}>
       {products.map((product) => (
-        <ProductItem product={product} />
+        <ProductItem key={product.id} product={product} />
       ))}
     </div>
   );
