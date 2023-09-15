@@ -1,10 +1,17 @@
 .cartSummary {
   border: 1px solid #FFA500;
   background-color: #FBF8F8;
-  width: 400px;
-  height: 500px;
+  width: 600px;
+  height: 700px;
   padding: 20px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartSummary__productList {
+  flex: 1;
+  overflow-y: auto;
 }
 
 .cartSummary__heading {
@@ -35,6 +42,7 @@
 .productCard .productCard__detailsPrice {
   font-size: 0.8rem;
   font-weight: 400;
+  margin-top: 8px;
 }
 
 .productCard img {

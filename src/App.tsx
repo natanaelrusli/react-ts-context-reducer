@@ -37,8 +37,8 @@ function App() {
       <CartDispatchContext.Provider value={{ dispatch: dispatch }}>
         <UserContext.Provider value={{ user, setUser }}>
           <div className='page-layout'>
-            <CartSummary />
             <ProductGrid products={products} />
+            <CartSummary />
           </div>
         </UserContext.Provider>
       </CartDispatchContext.Provider>
