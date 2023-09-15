@@ -33,6 +33,13 @@
   text-overflow: ellipsis;
 }
 
+.productItem .productPrice {
+  font-size: 0.9rem;
+  border-top: 1px solid rgb(200, 200, 200);
+  padding-top: 10px;
+  color: #343434;
+}
+
 .productItem .addProductButton {
   padding: 10px;
   border-radius: 8px;

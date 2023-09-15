@@ -2,14 +2,13 @@ import { useContext } from "react";
 import { ProductItf } from "../../types";
 
 import classes from "./ProductItem.module.css";
-import { CartContext, CartDispatchContext } from "../../context/CartContext";
+import { CartDispatchContext } from "../../context/CartContext";
 
 interface ProductItemProps {
   product: ProductItf;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
-  const { cart } = useContext(CartContext);
   const { dispatch } = useContext(CartDispatchContext);
 
   const handleAddToCart = (product: ProductItf) => {
@@ -21,16 +20,13 @@ const ProductItem = ({ product }: ProductItemProps) => {
 
   return (
     <div key={product.id} className={classes.productItem}>
-      {cart.products.map((product) => (
-        <>
-          <p>{product.quantity}</p>
-        </>
-      ))}
       <div className={classes.productItem__imageWrapper}>
         <img src={product.images[0]} alt={product.title} />
       </div>
 
       <div className={classes.productTitle}>{product.title}</div>
+
+      <div className={classes.productPrice}>${product.price}</div>
 
       <button
         className={classes.addProductButton}
