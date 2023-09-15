@@ -2,25 +2,35 @@ import { useContext } from "react";
 import { ProductItf } from "../../types";
 
 import classes from "./ProductItem.module.css";
-import { UserContext } from "../../context/UserContext";
+import { CartContext } from "../../context/CartContext";
 
 interface ProductItemProps {
   product: ProductItf;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
-  const { user } = useContext(UserContext);
+  const { cart, setCart } = useContext(CartContext);
 
   return (
     <div key={product.id} className={classes.productItem}>
-      <p>{user.username}</p>
+      {cart.products.map((product) => (
+        <p>{product.title}</p>
+      ))}
       <div className={classes.productItem__imageWrapper}>
         <img src={product.images[0]} alt={product.title} />
       </div>
 
       <div className={classes.productTitle}>{product.title}</div>
 
-      <button className={classes.addProductButton} onClick={() => {}}>
+      <button
+        className={classes.addProductButton}
+        onClick={() =>
+          setCart({
+            products: [...cart.products, { ...product, quantity: 1 }],
+            totalPrice: cart.totalPrice + product.price,
+          })
+        }
+      >
         Add to Cart
       </button>
     </div>
