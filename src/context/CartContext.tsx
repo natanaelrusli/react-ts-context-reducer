@@ -1,9 +1,13 @@
-import { Dispatch, SetStateAction, createContext } from "react";
+import { Dispatch, createContext } from "react";
 import { CartItf } from "../types";
+import { CartAction } from "../reducers/cartReducer";
 
 interface CartContextItf {
   cart: CartItf;
-  setCart: Dispatch<SetStateAction<CartItf>>;
+}
+
+interface CartDispatchContextItf {
+  dispatch: Dispatch<CartAction>;
 }
 
 const initialCartstate: CartItf = {
@@ -13,5 +17,8 @@ const initialCartstate: CartItf = {
 
 export const CartContext = createContext<CartContextItf>({
   cart: initialCartstate,
-  setCart: () => {},
+});
+
+export const CartDispatchContext = createContext<CartDispatchContextItf>({
+  dispatch: () => {},
 });

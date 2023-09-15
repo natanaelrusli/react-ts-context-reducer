@@ -2,19 +2,29 @@ import { useContext } from "react";
 import { ProductItf } from "../../types";
 
 import classes from "./ProductItem.module.css";
-import { CartContext } from "../../context/CartContext";
+import { CartContext, CartDispatchContext } from "../../context/CartContext";
 
 interface ProductItemProps {
   product: ProductItf;
 }
 
 const ProductItem = ({ product }: ProductItemProps) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
+  const { dispatch } = useContext(CartDispatchContext);
+
+  const handleAddToCart = (product: ProductItf) => {
+    dispatch({
+      type: "addToCart",
+      payload: product,
+    });
+  };
 
   return (
     <div key={product.id} className={classes.productItem}>
       {cart.products.map((product) => (
-        <p>{product.title}</p>
+        <>
+          <p>{product.quantity}</p>
+        </>
       ))}
       <div className={classes.productItem__imageWrapper}>
         <img src={product.images[0]} alt={product.title} />
@@ -24,12 +34,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
 
       <button
         className={classes.addProductButton}
-        onClick={() =>
-          setCart({
-            products: [...cart.products, { ...product, quantity: 1 }],
-            totalPrice: cart.totalPrice + product.price,
-          })
-        }
+        onClick={() => handleAddToCart(product)}
       >
         Add to Cart
       </button>
