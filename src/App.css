@@ -1,5 +1,12 @@
 .page-layout {
+  width: 100vw;
   display: flex;
   padding: 10px;
   gap: 20px;
+}
+
+@media screen and (max-width: 728px) {
+  .page-layout {
+    flex-direction: column-reverse;
+  } 
 }
